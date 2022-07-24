@@ -16,3 +16,6 @@ restart:
 
 ps:
 	docker compose ps
+
+npm:
+	docker compose exec frontend npm install

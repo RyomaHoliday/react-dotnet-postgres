@@ -1,6 +1,14 @@
 # react-dotnet-postgres
 
+Create .NET dev certs
+
 ```
-git clone https://github.com/RyomaHoliday/react-dotnet-postgres.git
-docker compose -f docker-compose.yml up -d --build
+$ sudo dotnet dev-certs https -ep ${HOME}/.aspnet/https/backend.pfx -p crypticpassword
+$ dotnet dev-certs https --trust
+```
+
+docker compose up
+
+```
+$ make up
 ```

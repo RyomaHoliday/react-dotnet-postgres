@@ -12,6 +12,7 @@ services:
       - 3000:3000
     environment:
       - CHOKIDAR_USEPOLLING=true
+      - HTTPS=true
     volumes:
       - node-modules:/usr/src/app/node_modules
       - ./frontend:/usr/src/app
@@ -24,10 +25,16 @@ services:
       context: backend
       dockerfile: Dockerfile
     ports:
-      - 5001:5001
+      - 5001:443
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://localhost:5001/
+      - ASPNETCORE_URLS=https://+:443
+      - ASPNETCORE_HTTPS_PORT=5001
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=crypticpassword
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/backend.pfx
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
+      - ~/.aspnet/https:/https:ro
     depends_on:
       db:
         condition: service_healthy
