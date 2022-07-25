@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
+using Backend.Models;
 
-namespace Backend.Models
+namespace Backend.Data
 {
     public class BackendContext : DbContext
     {

@@ -4,6 +4,9 @@ build:
 up:
 	docker compose up -d --build
 
+backend:
+	docker compose up -d --build backend
+
 stop:
 	docker compose stop
 

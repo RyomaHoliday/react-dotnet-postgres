@@ -1,5 +1,6 @@
 using Backend.Models;
 using Microsoft.EntityFrameworkCore;
+using Backend.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +36,7 @@ using (var scope = app.Services.CreateScope())
 
     var context = services.GetRequiredService<BackendContext>();
     context.Database.Migrate();
+    FakeData.Initialize(context);
 }
 
 app.UseHttpsRedirection();
