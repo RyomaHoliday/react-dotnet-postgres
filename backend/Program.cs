@@ -1,12 +1,14 @@
 using Backend.Models;
 using Microsoft.EntityFrameworkCore;
 using Backend.Data;
+using Microsoft.AspNetCore.Routing;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddDbContext<BackendContext>(opt =>
     {
         opt.EnableSensitiveDataLogging();
