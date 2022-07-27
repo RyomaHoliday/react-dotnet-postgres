@@ -2,11 +2,11 @@ import { AppBar, Drawer, IconButton, Toolbar, Typography } from '@mui/material';
 import React from 'react';
 import './App.css';
 import Routers from './Routers'
-import MenuIcon from '@mui/icons-material/Menu';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, makeStyles, ThemeProvider } from '@mui/material/styles';
+import Header from './components/templates/Header';
+import Sidebar from './components/templates/Sidebar';
 
-function App() {
-  
+export const App = () => {
   const theme = createTheme({
     typography: {
       fontFamily: [
@@ -22,26 +22,8 @@ function App() {
   return (
     <ThemeProvider theme={theme} >
       <div className="App">
-        <AppBar position="fixed">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography color="inherit">
-              react-dotnet-postgres
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          variant="permanent"
-        >
-        </Drawer>
+        <Header />
+        <Sidebar />
         <main>
           <Routers/>
         </main>

@@ -29,7 +29,7 @@ namespace Backend.Controllers
           {
               return NotFound();
           }
-            return await _context.Users.ToListAsync();
+            return await _context.Users.OrderBy(x => x.Id).ToListAsync();
         }
 
         // GET: api/User/5

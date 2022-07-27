@@ -6,7 +6,7 @@ const getAll = () => {
 const get = (id: any) => {
   return http.get<IUserData>(`/user/${id}`);
 };
-const create = (data: IUserData) => {
+const insert = (data: IUserData) => {
   return http.post<IUserData>("/user", data);
 };
 const update = (id: any, data: IUserData) => {
@@ -19,7 +19,7 @@ const remove = (id: any) => {
 const UserService = {
   getAll,
   get,
-  create,
+  insert,
   update,
   remove
 };
