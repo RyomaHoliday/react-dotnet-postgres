@@ -1,17 +1,52 @@
+import { AppBar, Drawer, IconButton, Toolbar, Typography } from '@mui/material';
 import React from 'react';
 import './App.css';
-import { Routes, Route, Link } from "react-router-dom";
-import UsersList from './components/pages/UsersList';
+import Routers from './Routers'
+import MenuIcon from '@mui/icons-material/Menu';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function App() {
+  
+  const theme = createTheme({
+    typography: {
+      fontFamily: [
+       'Roboto',
+       '"Noto Sans JP"', 
+       '"Helvetica"',
+       'Arial',
+       'sans-serif',
+     ].join(','),
+    }
+  });
+
   return (
-    <div className="App">
-      <div className="container mt-3">
-        <Routes>
-          <Route path="/" element={<UsersList/>} />
-        </Routes>
+    <ThemeProvider theme={theme} >
+      <div className="App">
+        <AppBar position="fixed">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography color="inherit">
+              react-dotnet-postgres
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          variant="permanent"
+        >
+        </Drawer>
+        <main>
+          <Routers/>
+        </main>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 

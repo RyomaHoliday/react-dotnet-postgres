@@ -1,3 +1,4 @@
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
 import React, { useState, useEffect, ChangeEvent } from "react";
 import UserDataService from "../../services/UserService";
 import IUserData from '../../types/User';
@@ -20,19 +21,28 @@ const UsersList: React.FC = () => {
     retrieveUsers();
   };
   return (
-    <div>
-        <h4>Users List</h4>
-        <ul>
+    <TableContainer component={Paper}>
+      <Table  sx={{ minWidth: 650 }} >
+        <TableHead>
+          <TableRow>
+            <TableCell>id</TableCell>
+            <TableCell>name</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {users &&
-            users.map((user, index) => (
-              <li
-                key={index}
+            users.map((user) => (
+              <TableRow
+                key={user.id}
               >
-                {user.name}
-              </li>
+                <TableCell component="th" scope="row">{user.id}</TableCell>
+                <TableCell>{user.name}</TableCell>
+                <TableCell>{user.note}</TableCell>
+              </TableRow>
             ))}
-        </ul>
-      </div>
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 export default UsersList;
